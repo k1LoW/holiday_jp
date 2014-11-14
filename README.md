@@ -1,4 +1,4 @@
-# holiday_jp
+# holiday_jp [![Build Status](https://travis-ci.org/k1LoW/holiday_jp.svg?branch=master)](https://travis-ci.org/k1LoW/holiday_jp)
 
 Japanege holiday datasets
 
