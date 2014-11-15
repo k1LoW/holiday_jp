@@ -7,27 +7,40 @@ require 'httpclient'
 context 'Check holidays.yml by Google Calendar' do
   before do
     today = Date::today
-    start_date = today
-    end_date = today + 365
+    start_date = today - 365
+    end_date = start_date + 365 * 2
 
     holidays = YAML.load_file(File.expand_path('../../holidays.yml', __FILE__))
-    
-    @span = holidays.select do |date|
-      date.between?(start_date, end_date)
-    end
 
+    client = HTTPClient.new
+    @calendar = {}
+    
     url = sprintf('http://www.google.com/calendar/feeds/%s/public/full?alt=json&%s&%s',
                   'japanese__ja%40holiday.calendar.google.com',
                   'start-min=' + start_date.to_s,
-                  'start-max=' + end_date.to_s)
-    client = HTTPClient.new
+                  'start-max=' + (start_date + 365).to_s)
     result = JSON.parse(client.get_content(url))
-    @calendar = {}
     result['feed']['entry'].each do |entry|
       holiday = Date.strptime(entry['gd$when'][0]['startTime'], "%Y-%m-%d")
       @calendar[holiday] = {
         'date' => holiday
       }
+    end
+
+    url = sprintf('http://www.google.com/calendar/feeds/%s/public/full?alt=json&%s&%s',
+                  'japanese__ja%40holiday.calendar.google.com',
+                  'start-min=' + (start_date + 365 + 1).to_s,
+                  'start-max=' + (start_date + 365 * 2).to_s)
+    result = JSON.parse(client.get_content(url))
+    result['feed']['entry'].each do |entry|
+      holiday = Date.strptime(entry['gd$when'][0]['startTime'], "%Y-%m-%d")
+      @calendar[holiday] = {
+        'date' => holiday
+      }
+    end
+    
+    @span = holidays.select do |date|
+      date.between?(start_date, end_date)
     end
   end
 
