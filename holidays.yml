@@ -4975,6 +4975,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2016-08-11:
+  date: 2016-08-11
+  week: 木
+  week_en: Thursday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2016-09-19:
   date: 2016-09-19
   week: 月
@@ -5086,6 +5093,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2017-08-11:
+  date: 2017-08-11
+  week: 金
+  week_en: Friday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2017-09-18:
   date: 2017-09-18
@@ -5205,6 +5219,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2018-08-11:
+  date: 2018-08-11
+  week: 土
+  week_en: Saturday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2018-09-17:
   date: 2018-09-17
@@ -5332,6 +5353,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2019-08-11:
+  date: 2019-08-11
+  week: 日
+  week_en: Sunday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2019-09-16:
   date: 2019-09-16
   week: 月
@@ -5451,6 +5479,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2020-08-11:
+  date: 2020-08-11
+  week: 火
+  week_en: Tuesday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2020-09-21:
   date: 2020-09-21
   week: 月
@@ -5556,6 +5591,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2021-08-11:
+  date: 2021-08-11
+  week: 水
+  week_en: Wednesday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2021-09-20:
   date: 2021-09-20
   week: 月
@@ -5660,6 +5702,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2022-08-11:
+  date: 2022-08-11
+  week: 木
+  week_en: Thursday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2022-09-19:
   date: 2022-09-19
@@ -5772,6 +5821,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2023-08-11:
+  date: 2023-08-11
+  week: 金
+  week_en: Friday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2023-09-18:
   date: 2023-09-18
@@ -5891,6 +5947,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2024-08-11:
+  date: 2024-08-11
+  week: 日
+  week_en: Sunday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2024-09-16:
   date: 2024-09-16
@@ -6018,6 +6081,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2025-08-11:
+  date: 2025-08-11
+  week: 月
+  week_en: Monday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2025-09-15:
   date: 2025-09-15
   week: 月
@@ -6136,6 +6206,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2026-08-11:
+  date: 2026-08-11
+  week: 火
+  week_en: Tuesday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2026-09-21:
   date: 2026-09-21
@@ -6256,6 +6333,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2027-08-11:
+  date: 2027-08-11
+  week: 水
+  week_en: Wednesday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2027-09-20:
   date: 2027-09-20
   week: 月
@@ -6360,6 +6444,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2028-08-11:
+  date: 2028-08-11
+  week: 金
+  week_en: Friday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2028-09-18:
   date: 2028-09-18
@@ -6479,6 +6570,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2029-08-11:
+  date: 2029-08-11
+  week: 土
+  week_en: Saturday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2029-09-17:
   date: 2029-09-17
@@ -6606,6 +6704,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2030-08-11:
+  date: 2030-08-11
+  week: 日
+  week_en: Sunday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2030-09-16:
   date: 2030-09-16
   week: 月
@@ -6725,6 +6830,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2031-08-11:
+  date: 2031-08-11
+  week: 月
+  week_en: Monday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2031-09-15:
   date: 2031-09-15
   week: 月
@@ -6836,6 +6948,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2032-08-11:
+  date: 2032-08-11
+  week: 水
+  week_en: Wednesday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2032-09-20:
   date: 2032-09-20
@@ -6956,6 +7075,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2033-08-11:
+  date: 2033-08-11
+  week: 木
+  week_en: Thursday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2033-09-19:
   date: 2033-09-19
   week: 月
@@ -7067,6 +7193,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2034-08-11:
+  date: 2034-08-11
+  week: 金
+  week_en: Friday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2034-09-18:
   date: 2034-09-18
@@ -7186,6 +7319,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2035-08-11:
+  date: 2035-08-11
+  week: 土
+  week_en: Saturday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2035-09-17:
   date: 2035-09-17
@@ -7313,6 +7453,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2036-08-11:
+  date: 2036-08-11
+  week: 月
+  week_en: Monday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2036-09-15:
   date: 2036-09-15
   week: 月
@@ -7432,6 +7579,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2037-08-11:
+  date: 2037-08-11
+  week: 火
+  week_en: Tuesday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2037-09-21:
   date: 2037-09-21
   week: 月
@@ -7544,6 +7698,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2038-08-11:
+  date: 2038-08-11
+  week: 水
+  week_en: Wednesday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2038-09-20:
   date: 2038-09-20
   week: 月
@@ -7648,6 +7809,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2039-08-11:
+  date: 2039-08-11
+  week: 木
+  week_en: Thursday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2039-09-19:
   date: 2039-09-19
@@ -7768,6 +7936,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2040-08-11:
+  date: 2040-08-11
+  week: 土
+  week_en: Saturday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2040-09-17:
   date: 2040-09-17
   week: 月
@@ -7886,6 +8061,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2041-08-11:
+  date: 2041-08-11
+  week: 日
+  week_en: Sunday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2041-09-16:
   date: 2041-09-16
@@ -8006,6 +8188,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2042-08-11:
+  date: 2042-08-11
+  week: 月
+  week_en: Monday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2042-09-15:
   date: 2042-09-15
   week: 月
@@ -8124,6 +8313,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2043-08-11:
+  date: 2043-08-11
+  week: 火
+  week_en: Tuesday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2043-09-21:
   date: 2043-09-21
@@ -8244,6 +8440,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2044-08-11:
+  date: 2044-08-11
+  week: 木
+  week_en: Thursday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2044-09-19:
   date: 2044-09-19
   week: 月
@@ -8355,6 +8558,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2045-08-11:
+  date: 2045-08-11
+  week: 金
+  week_en: Friday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2045-09-18:
   date: 2045-09-18
@@ -8474,6 +8684,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2046-08-11:
+  date: 2046-08-11
+  week: 土
+  week_en: Saturday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2046-09-17:
   date: 2046-09-17
@@ -8601,6 +8818,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2047-08-11:
+  date: 2047-08-11
+  week: 日
+  week_en: Sunday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2047-09-16:
   date: 2047-09-16
   week: 月
@@ -8720,6 +8944,13 @@
   name: 海の日
   name_en: "Marine Day"
 
+2048-08-11:
+  date: 2048-08-11
+  week: 火
+  week_en: Tuesday
+  name: 山の日
+  name_en: "Mountain Day"
+
 2048-09-21:
   date: 2048-09-21
   week: 月
@@ -8824,6 +9055,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2049-08-11:
+  date: 2049-08-11
+  week: 水
+  week_en: Wednesday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2049-09-20:
   date: 2049-09-20
@@ -8943,6 +9181,13 @@
   week_en: Monday
   name: 海の日
   name_en: "Marine Day"
+
+2050-08-11:
+  date: 2050-08-11
+  week: 木
+  week_en: Thursday
+  name: 山の日
+  name_en: "Mountain Day"
 
 2050-09-19:
   date: 2050-09-19
