@@ -10,6 +10,10 @@ Japanege holiday datasets
 
 Copyright (c) 2009 Masaki Komagata. See [LICENSE](https://github.com/komagata/holiday_jp/blob/master/LICENSE) for details.
 
+## "Datasets" idea
+
+[Project Woothee](https://woothee.github.io/)
+
 ## License
 
 The MIT License
