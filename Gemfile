@@ -3,4 +3,7 @@ gem "bundler"
 gem "rake", "~> 10.0"
 gem "rspec"
 gem "httpclient"
-gem "holiday_jp", github: "komagata/holiday_jp"
+gem "tzinfo"
+gem "icalendar"
+gem "icalendar-recurrence"
+

@@ -3,8 +3,12 @@ require 'spec_helper'
 require 'yaml'
 require 'json'
 require 'httpclient'
+require 'date'
+require 'tzinfo'
+require 'icalendar'
+require 'icalendar/recurrence'
 
-context 'Check holidays.yml by Google Calendar' do
+context 'Check holidays.yml by JapanHolidays.ics' do
   before do
     today = Date::today
     start_date = today - 365
@@ -15,30 +19,24 @@ context 'Check holidays.yml by Google Calendar' do
     client = HTTPClient.new
     @calendar = {}
     
-    url = sprintf('http://www.google.com/calendar/feeds/%s/public/full?alt=json&%s&%s',
-                  'japanese__ja%40holiday.calendar.google.com',
-                  'start-min=' + start_date.to_s,
-                  'start-max=' + (start_date + 365).to_s)
-    result = JSON.parse(client.get_content(url))
-    result['feed']['entry'].each do |entry|
-      holiday = Date.strptime(entry['gd$when'][0]['startTime'], "%Y-%m-%d")
-      @calendar[holiday] = {
-        'date' => holiday
-      }
+    url = 'https://mozorg.cdn.mozilla.net/media/caldata/JapanHolidays.ics'
+    result = Icalendar.parse(client.get_content(url), true)
+    result.events.each do |event|
+      if event.rrule == []
+        h = Date.parse(event.dtstart.to_s)       
+        @calendar[h] = {
+          'date' => h
+        } if (h.between?(start_date, end_date))
+      else
+        event.occurrences_between(start_date, end_date).each do | e |
+          h = Date.parse(e.start_time.to_s)
+          @calendar[h] = {
+            'date' => h
+          }
+        end
+      end
     end
 
-    url = sprintf('http://www.google.com/calendar/feeds/%s/public/full?alt=json&%s&%s',
-                  'japanese__ja%40holiday.calendar.google.com',
-                  'start-min=' + (start_date + 365 + 1).to_s,
-                  'start-max=' + (start_date + 365 * 2).to_s)
-    result = JSON.parse(client.get_content(url))
-    result['feed']['entry'].each do |entry|
-      holiday = Date.strptime(entry['gd$when'][0]['startTime'], "%Y-%m-%d")
-      @calendar[holiday] = {
-        'date' => holiday
-      }
-    end
-    
     @span = holidays.select do |date|
       date.between?(start_date, end_date)
     end
@@ -48,13 +46,13 @@ context 'Check holidays.yml by Google Calendar' do
     expect(@span.size).to eq @calendar.size
   end
 
-  it "holidays.yml should have date of Google Calender's result" do
+  it "holidays.yml should have date of JapanHolidays.ics" do
     @calendar.each do |date|
       expect(@span.include? date[0]).to eq true
     end
   end
 
-  it "Google Calender's result should have date of holidays.yml" do
+  it "JapanHolidays.ics result should have date of holidays.yml" do
     @span.each do |date|
       expect(@calendar.include? date[0]).to eq true
     end
