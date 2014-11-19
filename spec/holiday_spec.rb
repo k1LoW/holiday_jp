@@ -7,8 +7,9 @@ require 'date'
 require 'tzinfo'
 require 'icalendar'
 require 'icalendar/recurrence'
+require 'pp'
 
-context 'Check holidays.yml by JapanHolidays.ics' do
+context 'Check holidays.yml by finds.jp' do
   before do
     today = Date::today
     start_date = today - 365
@@ -18,22 +19,20 @@ context 'Check holidays.yml by JapanHolidays.ics' do
 
     client = HTTPClient.new
     @calendar = {}
-    
-    url = 'https://mozorg.cdn.mozilla.net/media/caldata/JapanHolidays.ics'
-    result = Icalendar.parse(client.get_content(url), true)
-    result.events.each do |event|
-      if event.rrule == []
-        h = Date.parse(event.dtstart.to_s)       
-        @calendar[h] = {
-          'date' => h
-        } if (h.between?(start_date, end_date))
-      else
-        event.occurrences_between(start_date, end_date).each do | e |
-          h = Date.parse(e.start_time.to_s)
-          @calendar[h] = {
-            'date' => h
-          }
-        end
+
+    start_year = start_date.year
+    end_year = end_date.year
+    (start_year..end_year).each do | year |
+      (1..12).each do | month |
+        url = sprintf('http://www.finds.jp/ws/calendar.php?json&t=h&y=%s&m=%s', year, month)
+        result = JSON.parse(client.get_content(url))
+        result['result']['day'].each do | d |
+          holiday = Date::new(year, month, d['mday']) if d
+          @calendar[holiday] = {
+            'date' => holiday,
+            'name' => d['hname'],
+          } if (holiday.between?(start_date, end_date) && d['htype'] != 9)
+        end if result['result']['day']
       end
     end
 
@@ -46,13 +45,13 @@ context 'Check holidays.yml by JapanHolidays.ics' do
     expect(@span.size).to eq @calendar.size
   end
 
-  it "holidays.yml should have date of JapanHolidays.ics" do
+  it "holidays.yml should have date of finds.jp" do
     @calendar.each do |date|
       expect(@span.include? date[0]).to eq true
     end
   end
 
-  it "JapanHolidays.ics result should have date of holidays.yml" do
+  it "finds.jp result should have date of holidays.yml" do
     @span.each do |date|
       expect(@calendar.include? date[0]).to eq true
     end
