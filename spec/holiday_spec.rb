@@ -4,10 +4,6 @@ require 'yaml'
 require 'json'
 require 'httpclient'
 require 'date'
-require 'tzinfo'
-require 'icalendar'
-require 'icalendar/recurrence'
-require 'pp'
 
 context 'Check holidays.yml by finds.jp' do
   before do
