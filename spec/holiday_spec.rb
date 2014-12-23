@@ -20,7 +20,7 @@ context 'Check holidays.yml by finds.jp' do
     end_year = end_date.year
     (start_year..end_year).each do | year |
       (1..12).each do | month |
-        url = sprintf('http://www.finds.jp/ws/calendar.php?json&t=h&y=%s&m=%s', year, month)
+        url = sprintf('http://www.finds.jp/ws/calendar.php?json&t=h&y=%s&m=%s&l=3', year, month)
         result = JSON.parse(client.get_content(url))
         result['result']['day'].each do | d |
           holiday = Date::new(year, month, d['mday']) if d
@@ -35,6 +35,7 @@ context 'Check holidays.yml by finds.jp' do
     @span = holidays.select do |date|
       date.between?(start_date, end_date)
     end
+
   end
 
   it "should eq holidays count" do    
