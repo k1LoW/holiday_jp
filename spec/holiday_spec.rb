@@ -11,7 +11,7 @@ context 'Check holidays.yml by finds.jp' do
     start_date = today - 365
     end_date = start_date + 365 * 2
 
-    holidays = YAML.load_file(File.expand_path('../../holidays.yml', __FILE__))
+    @holidays = YAML.load_file(File.expand_path('../../holidays.yml', __FILE__))
 
     client = HTTPClient.new
     @calendar = {}
@@ -32,7 +32,7 @@ context 'Check holidays.yml by finds.jp' do
       end
     end
 
-    @span = holidays.select do |date|
+    @span = @holidays.select do |date|
       date.between?(start_date, end_date)
     end
 
@@ -52,5 +52,13 @@ context 'Check holidays.yml by finds.jp' do
     @span.each do |date|
       expect(@calendar.include? date[0]).to eq true
     end
+  end
+
+  it "holidays.yml should have holiday in lieu of `Mountain Day1" do
+    expect(@holidays.has_key? Date::parse('2019-08-12')).to eq true
+    expect(@holidays.has_key? Date::parse('2024-08-12')).to eq true
+    expect(@holidays.has_key? Date::parse('2030-08-12')).to eq true
+    expect(@holidays.has_key? Date::parse('2041-08-12')).to eq true
+    expect(@holidays.has_key? Date::parse('2047-08-12')).to eq true
   end
 end
