@@ -6,6 +6,19 @@ require 'httpclient'
 require 'date'
 
 context 'Check holidays.yml by finds.jp' do
+  class Date
+    # find.jpでは休日に御用納め期間が入ってくるため
+    def goyou_osame?
+      if month == 12 && [29, 30, 31].include?(day)
+        true
+      elsif month == 1 && [1, 2, 3].include?(day)
+        true
+      else
+        false
+      end
+    end
+  end
+
   before do
     today = Date::today
     start_date = today - 365
@@ -18,18 +31,17 @@ context 'Check holidays.yml by finds.jp' do
 
     start_year = start_date.year
     end_year = end_date.year
-    (start_year..end_year).each do | year |
-      (1..12).each do | month |        
+    (start_year..end_year).each do |year|
+      (1..12).each do |month|
         url = sprintf('http://www.finds.jp/ws/calendar.php?json&t=h&y=%s&m=%s&l=3', year, month)
         result = JSON.parse(client.get_content(url))
-        result['result']['day'].each do | d |
+        result['result']['day'].each do |d|
           holiday = Date::new(year, month, d['mday']) if d
           @calendar[holiday] = {
             'date' => holiday,
-            'name' => d['hname'],
-          } if (holiday.between?(start_date, end_date) && d['htype'] != 9)
+            'name' => d['hname']
+          } if holiday.between?(start_date, end_date) && d['htype'] != 9
         end if result['result']['day']
-        sleep(1) # wait
       end
     end
 
@@ -38,27 +50,24 @@ context 'Check holidays.yml by finds.jp' do
     end
   end
 
-  it "should eq holidays count" do    
-    expect(@span.size).to eq @calendar.size
-  end
-
-  it "holidays.yml should have date of finds.jp" do
+  it 'holidays.yml should have date of finds.jp' do
     @calendar.each do |date|
-      expect(@span.include? date[0]).to eq true
+      expect(@span.include?(date[0])).to eq true
     end
   end
 
-  it "finds.jp result should have date of holidays.yml" do
+  it 'finds.jp result should have date of holidays.yml' do
     @span.each do |date|
-      expect(@calendar.include? date[0]).to eq true
+      next if date[0].goyou_osame?
+      expect(@calendar.include?(date[0])).to eq true
     end
   end
 
-  it "holidays.yml should have holiday in lieu of `Mountain Day1" do
-    expect(@holidays.has_key? Date::parse('2019-08-12')).to eq true
-    expect(@holidays.has_key? Date::parse('2024-08-12')).to eq true
-    expect(@holidays.has_key? Date::parse('2030-08-12')).to eq true
-    expect(@holidays.has_key? Date::parse('2041-08-12')).to eq true
-    expect(@holidays.has_key? Date::parse('2047-08-12')).to eq true
+  it 'holidays.yml should have holiday in lieu of `Mountain Day`' do
+    expect(@holidays.key?(Date::parse('2019-08-12'))).to eq true
+    expect(@holidays.key?(Date::parse('2024-08-12'))).to eq true
+    expect(@holidays.key?(Date::parse('2030-08-12'))).to eq true
+    expect(@holidays.key?(Date::parse('2041-08-12'))).to eq true
+    expect(@holidays.key?(Date::parse('2047-08-12'))).to eq true
   end
 end
