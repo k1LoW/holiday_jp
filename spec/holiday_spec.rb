@@ -2,64 +2,32 @@
 require 'spec_helper'
 require 'yaml'
 require 'json'
-require 'httpclient'
 require 'date'
+require 'google_holiday_calendar'
 
-context 'Check holidays.yml by finds.jp' do
-  class Date
-    # find.jpでは休日に御用納め期間が入ってくるため
-    def goyou_osame?
-      if month == 12 && [29, 30, 31].include?(day)
-        true
-      elsif month == 1 && [1, 2, 3].include?(day)
-        true
-      else
-        false
-      end
-    end
-  end
-
+context 'Check holidays.yml by Google Calendar' do
   before do
     today = Date::today
     start_date = today - 365
     end_date = start_date + 365 * 2
 
     @holidays = YAML.load_file(File.expand_path('../../holidays.yml', __FILE__))
-
-    client = HTTPClient.new
-    @calendar = {}
-
-    start_year = start_date.year
-    end_year = end_date.year
-    (start_year..end_year).each do |year|
-      (1..12).each do |month|
-        url = sprintf('http://www.finds.jp/ws/calendar.php?json&t=h&y=%s&m=%s&l=3', year, month)
-        result = JSON.parse(client.get_content(url))
-        result['result']['day'].each do |d|
-          holiday = Date::new(year, month, d['mday']) if d
-          @calendar[holiday] = {
-            'date' => holiday,
-            'name' => d['hname']
-          } if holiday.between?(start_date, end_date) && d['htype'] != 9
-        end if result['result']['day']
-      end
-    end
-
+    @google_calendar = GoogleHolidayCalendar::Calendar.new(country: 'japanese', lang: 'ja', api_key: ENV['GOOGLE_CALENDAR_API_KEY'])
+    @gholidays = @google_calendar.holidays(start_date: start_date, end_date: end_date, limit: 50)
     @span = @holidays.select do |date|
       date.between?(start_date, end_date)
     end
   end
 
-  it 'holidays.yml should have date of finds.jp' do
-    @calendar.each do |date|
-      expect(@span.include?(date[0])).to eq true
+  it 'Google calendar result should have date of holidays.yml' do
+    @span.each do |date|
+      expect(@google_calendar.holiday?(date[0])).to eq true
     end
   end
 
-  it 'finds.jp result should have date of holidays.yml' do
-    @span.each do |date|
-      next if date[0].goyou_osame?
-      expect(@calendar.include?(date[0])).to eq true
+  it 'holidays.yml shoud have date of Google calendar' do
+    @gholidays.each do |date, name|
+      expect(@holidays.key?(date)).to eq true
     end
   end
 
