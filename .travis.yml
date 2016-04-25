@@ -1,8 +1,11 @@
 language: ruby
 rvm:
-  - 2.1.4
+- 2.2.4
+env:
+  global:
+    secure: H+iKCJ5P6q6bYHzAzUtSemnc+66cto/ezBHTGHxcNtaL7XAwrAMxLyMtiTuCO1K2PXh6Hb9iWCqkCzYUOJOqQ7KFsDlC/5wdCgjaWBglLqQo98EymmQnt+ignz8J2xwX25s9ViBssnZleDDZPX4HNY1WXQJZEWAEGXTQb840Rcs=
 install:
-  - gem install bundler
-  - bundle install
+- gem install bundler
+- bundle install
 script:
-  - bundle exec rake spec
+- bundle exec rake spec
