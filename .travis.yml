@@ -1,9 +1,9 @@
 language: ruby
+sudo: false
 rvm:
 - 2.2.4
 env:
-  global:
-    secure: H+iKCJ5P6q6bYHzAzUtSemnc+66cto/ezBHTGHxcNtaL7XAwrAMxLyMtiTuCO1K2PXh6Hb9iWCqkCzYUOJOqQ7KFsDlC/5wdCgjaWBglLqQo98EymmQnt+ignz8J2xwX25s9ViBssnZleDDZPX4HNY1WXQJZEWAEGXTQb840Rcs=
+  GOOGLE_CALENDAR_API_KEY=AIzaSyBua5ystvigElyCGBeJQ-lvXnLAal5k_jw
 install:
 - gem install bundler
 - bundle install
